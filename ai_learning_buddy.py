@@ -1,9 +1,3 @@
-
-#openai.api_key = "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"  
-
-
-
-
 import openai
 import streamlit as st
 
