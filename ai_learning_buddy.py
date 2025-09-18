@@ -1,5 +1,5 @@
 
-#openai.api_key = "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"  # replace with your key
+#openai.api_key = "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"  
 
 
 
@@ -7,9 +7,13 @@
 import openai
 import streamlit as st
 
-openai.api_key = "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"  # Replace with your actual key
+from dotenv import load_dotenv
+import os
 
-# 1️⃣ Function to explain concept like a 5-year-old
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Function to explain concept like a 5-year-old
 def explain_like_im5(concept):
     prompt = f"Explain '{concept}' like I'm 5 years old in simple words."
     response = openai.ChatCompletion.create(
@@ -23,7 +27,7 @@ def explain_like_im5(concept):
     )
     return response['choices'][0]['message']['content'].strip()
 
-# 2️⃣ Function to generate simple quiz
+#  Function to generate simple quiz
 def generate_quiz(concept):
     prompt = f"Create 3 very simple multiple-choice questions for a 5-year-old about '{concept}'. Each question should have 4 options and mark the correct one clearly."
     response = openai.ChatCompletion.create(
